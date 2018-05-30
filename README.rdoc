@@ -1,28 +1,53 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Yet Another Simple JSON-API Indexer
 
-Things you may want to cover:
+This file is intended to explain the use of this Simple HTML Indexer
 
-* Ruby version
+## Requisites:
+- Ruby 2.4.2
+- Rails 4.2.10
+- JSOAPI-response 0.9
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Installation:
+After you git clone the repo, follow the next steps on yout terminal or console:</b>
+- bundle install (install all required gems)
+- open database.yml and change you local mysql password
+- rake db:setup (to create empty database structure)
+- rake db:migrate (to update database schema)
+- rails server
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The API is built under the next namespace
+
+``` 
+https://localhost:3000/api/v1/
+``` 
+
+## Usage:
+
+Show all the URLS in the database and the relationships
+``` 
+https://localhost:3000/api/urls
+``` 
+
+Show data from a specific entry
+``` 
+https://localhost:3000/api/urls/1
+``` 
+
+Show the related items for a specific URL
+``` 
+http://localhost:3000/api/v1/urls/1?include=h1s,h2s,h3s,links
+``` 
+
+## Saving Data
+Passing the URL as part of the JSON String will create an entry into the Urls table.
+
+Example: 
+
+``` 
+curl -i -H "Accept: application/vnd.api+json" -H 'Content-Type:application/vnd.api+json' -X POST -d '{"data": {"type":"urls", "attributes":{"url":"http://www.microsoft.com"}}}' http://0.0.0.0:3001/api/v1/urls
+``` 
+
+H1,H2,H3 and Links parsing (Work in progress)
