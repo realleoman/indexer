@@ -14,7 +14,7 @@ development:
   database: Indexer_development
   pool: 5
   username: root
-  password: 
+  password: interdev
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -26,7 +26,7 @@ test:
   database: Indexer_test
   pool: 5
   username: root
-  password:
+  password: interdev
   socket: /tmp/mysql.sock
 
 production:
